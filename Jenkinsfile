@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  parameters {
+    string(name: 'HOSTNAME', defaultValue: '', description: 'Where we are?')
+    }
+  
   stages {
     stage('job1') {
 	steps {
@@ -12,7 +16,8 @@ pipeline {
             	}
             	echo "stg1:"+HOSTNAME0
 	    }
-	    echo "stg1:"+HOSTNAME              
+	    ${params.HOSTNAME} = HOSTNAME0
+	    echo "stg1:"+ ${params.HOSTNAME}
 	}
     }
 }    
