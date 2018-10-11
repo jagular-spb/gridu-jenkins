@@ -14,6 +14,12 @@ pipeline {
 		}
 	    }
 	}
+	stage('stg2') {
+	    steps{
+		echo env.HOSTNAME
+	    }
+	}
+	
     }
   environment {
     user = 'Jenkins'
