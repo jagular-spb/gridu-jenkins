@@ -11,6 +11,10 @@ pipeline {
         echo 'wtf'
         isUnix()
         sh 'returnStdout: true, script: \'hostname\''
+        dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+          sh 'hostname'
+        }
+
       }
     }
   }
