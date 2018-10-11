@@ -1,5 +1,10 @@
+
 pipeline {
     agent any
+    options {
+	timestamps()
+    }
+
     stages {  
 	stage('stg1') {
 	    steps {
@@ -13,15 +18,26 @@ pipeline {
             	    }
 		}
 	    }
-	}
+	}	
+    }
+  environment {
+    user = 'Jenkins'
+  }
+}
+
+pipeline {
+    agent any
+    options {
+	timestamps()
+    }
+
+    stages {  
 	stage('stg2') {
 	    steps{
 		echo env.HOSTNAME
 	    }
 	}
-	
+
+    
     }
-  environment {
-    user = 'Jenkins'
-  }
 }
