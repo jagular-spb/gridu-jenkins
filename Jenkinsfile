@@ -60,6 +60,6 @@ pipeline {
     newContainerPerStage()
   }
   triggers {
-    cron('H/15 * * * *')
+    pollSCM('H/15 * * * *')
   }
 }
