@@ -1,9 +1,8 @@
 pipeline {
   agent any
-
   stages {
     stage('job1') {
-	steps{
+	steps {
 	    dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
                 script {
         		HOSTNAME0 = sh(
@@ -14,21 +13,16 @@ pipeline {
             	echo "stg1:"+HOSTNAME0
 	    }
 	    echo "stg1:"+HOSTNAME              
-
 	}
     }
 }    
-    posts {
-	sucsess{
-	    echo 'ok'
-	}
-    }
 
     
 	
   environment {
-    user = 'Jenkins'
+    HOSTNAME0 = 'Jenkins'
   }
+  
   options {
     timestamps()
     newContainerPerStage()
