@@ -3,10 +3,10 @@ pipeline {
   agent {
         docker
         {
-        docker.withDockerServer('tcp://127.0.0.1:2376'){
-            docker.image('docker.io/jenkinsci/slave:latest')
+//        withDockerServer('tcp://127.0.0.1:2376')
+            image: "docker.io/jenkinsci/slave:latest'
             }
-        }
+        
     }
     
   stages {
