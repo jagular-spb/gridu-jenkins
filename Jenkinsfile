@@ -5,7 +5,11 @@ pipeline {
 	    steps {
 	    echo 'wtf'
 		dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
-        	    sh 'hostname'
+            	    script {
+			env.HOSTNAME = sh(
+                    	    script: "hostname",
+                    	    returnStdout: true
+                	).trim()
 		}
 	    }
 	}
