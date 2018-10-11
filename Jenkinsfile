@@ -10,6 +10,7 @@ pipeline {
                     	    script: "hostname",
                     	    returnStdout: true
                 	).trim()
+            	    }
 		}
 	    }
 	}
