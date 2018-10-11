@@ -7,14 +7,14 @@ pipeline {
 	steps {
 	    dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
                 script {
-        		HOSTNAME0 = sh(
+        		env.HOSTNAME0 = sh(
                 	script: "hostname",
             		returnStdout: true
             		).trim()
             	}
-            	echo "stg1:"+HOSTNAME0
+            	echo "stg1:"+env.HOSTNAME0
 	    }
-	    echo "stg1.1:"+HOSTNAME0
+	    echo "stg1.1:"+env.HOSTNAME0
 	}
     }
 
