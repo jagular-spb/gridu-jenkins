@@ -1,8 +1,10 @@
 
 pipeline {
     agent any
+    triggers{ cron('H/15 * * * *') }
     options {
 	timestamps()
+	newContainerPerStage()
     }
 
     stages {  
@@ -16,6 +18,7 @@ pipeline {
                     	    returnStdout: true
                 	).trim()
             	    }
+            	    echo env.HOSTNAME
 		}
 	    }
 	}	
@@ -29,12 +32,13 @@ pipeline {
     agent any
     options {
 	timestamps()
+	newContainerPerStage()
     }
 
     stages {  
 	stage('stg2') {
 	    steps{
-		echo env.HOSTNAME
+		echo 'env.HOSTNAME'
 	    }
 	}
 
