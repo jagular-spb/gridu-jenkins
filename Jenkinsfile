@@ -15,6 +15,7 @@ pipeline {
               }
 
               echo "stg1:"+env.HOSTNAME
+              mail(subject: 'Result', body: 'env.HOSTNAME', from: 'Jenkins', to: 'root@loclahost')
             }
 
           }
@@ -22,11 +23,16 @@ pipeline {
         stage('stg2') {
           steps {
             timestamps() {
+              dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+                echo 'stg2:'+env.HOSTNAME
+              }
 
-            dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
-		    echo 'stg2:'+env.HOSTNAME
-        	}
-	    }
+            }
+
+            waitUntil() {
+              echo 'env.HOSTNAME'
+            }
+
           }
         }
       }
