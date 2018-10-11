@@ -1,26 +1,31 @@
 pipeline {
   agent any
+
   stages {
-    stage('stg1') {
-      parallel {
-        stage('stg1') {
-          steps {
-            echo 'wtf'
-            dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
-              script {
-                env.HOSTNAME = sh(
-                  script: "hostname",
-                  returnStdout: true
-                ).trim()
-              }
-
-              echo "stg1:"+env.HOSTNAME
-              mail(subject: 'Result', body: 'env.HOSTNAME', from: 'Jenkins', to: 'root@loclahost')
+    stage('job1') {
+	stages {
+	stage('stg1')
+	    steps {
+        	echo 'wtf'
+        	dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+            	    script {
+            		HOSTNAME0 = sh(
+                	script: "hostname",
+            		returnStdout: true
+            		).trim()
+            	    }
+            	    echo "stg1:"+HOSTNAME0
+        	}
+                echo "stg1:"+HOSTNAME              
             }
-
           }
-        }
-        stage('stg2') {
+	 post {
+	    success {
+    		// One or more steps need to be included within each condition's block.
+    		stages {
+    		    stage ('stg2') {
+
+
           steps {
             timestamps() {
               dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
@@ -29,15 +34,26 @@ pipeline {
 
             }
 
-            waitUntil() {
-              echo 'env.HOSTNAME'
-            }
-
-          }
+    		    
+    			}
+    		    
+    		    }
+		}
+	    }
+	}          
         }
-      }
-    }
+        
+        
+
+
   }
+  
+ post {
+    success {
+      // One or more steps need to be included within each condition's block.
+      echo '0'
+    }
+  }  
   environment {
     user = 'Jenkins'
   }
