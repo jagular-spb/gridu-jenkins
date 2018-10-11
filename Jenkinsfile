@@ -1,7 +1,7 @@
 pipeline {
   agent any
-  parameters {
-    string(name: 'HOSTNAME', defaultValue: '', description: 'Where we are?')
+  enviroment {
+    HOSTNAME='Where we are?'
     }
   
   stages {
@@ -16,16 +16,16 @@ pipeline {
             	}
             	echo "stg1:"+HOSTNAME0
 	    }
-	    env.HOSTNAME1 = HOSTNAME0
-	    HOSTNAME = HOSTNAME0	    
+	    enviroment { HOSTNAME=HOSTNAME0}
+	    
 	    echo "stg1:"+${HOSTNAME}
 	}
     }
 
     stage('job2') {
 	steps {
-	echo "stg2:"+${HOSTNAME}
-	echo "stg2 with env: ${env.HOSTNAME1}"
+	    echo "stg2:"+${HOSTNAME}
+	    echo "stg2 with env: ${env.HOSTNAME1}"
 	}
     }
 
