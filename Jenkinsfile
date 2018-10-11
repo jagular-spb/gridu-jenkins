@@ -16,7 +16,7 @@ pipeline {
             	}
             	echo "stg1:"+HOSTNAME0
 	    }
-	    enviroment { HOSTNAME=HOSTNAME0}
+
 	    
 	    echo "stg1:"+${HOSTNAME}
 	}
@@ -24,8 +24,8 @@ pipeline {
 
     stage('job2') {
 	steps {
-	    echo "stg2:"+${HOSTNAME}
-	    echo "stg2 with env: ${env.HOSTNAME1}"
+	    echo "stg2:"+${HOSTNAME0}
+
 	}
     }
 
