@@ -9,6 +9,8 @@ pipeline {
     stage('stg1') {
       steps {
         echo 'wtf'
+        isUnix()
+        sh 'returnStdout: true, script: \'hostname\''
       }
     }
   }
