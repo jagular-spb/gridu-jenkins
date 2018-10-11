@@ -1,9 +1,11 @@
 pipeline {
  
   agent {
-        docker.withDockerServer('tcp://127.0.0.1:2376')
+        docker
         {
+        docker.withDockerServer('tcp://127.0.0.1:2376'){
             docker.image('docker.io/jenkinsci/slave:latest')
+            }
         }
     }
     
