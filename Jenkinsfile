@@ -1,8 +1,6 @@
 pipeline {
   agent any
-  enviroment {
-    HOSTNAME='Where we are?'
-    }
+
   
   stages {
     stage('job1') {
