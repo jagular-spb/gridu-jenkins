@@ -17,7 +17,8 @@ pipeline {
 
 	}
     }
-    posts{
+    
+    posts {
 	sucsess{
 	    echo 'ok'
 	}
