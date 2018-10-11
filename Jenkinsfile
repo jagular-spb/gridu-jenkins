@@ -4,7 +4,7 @@ pipeline {
         docker
         {
 //        withDockerServer('tcp://127.0.0.1:2376')
-            image: "docker.io/jenkinsci/slave:latest'
+            image: "docker.io/jenkinsci/slave:latest"
             }
         
     }
