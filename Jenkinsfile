@@ -24,9 +24,9 @@ pipeline {
             timestamps() {
 
             dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
-		echo 'stg2:'+env.HOSTNAME
-            }
-
+		    echo 'stg2:'+env.HOSTNAME
+        	}
+	    }
           }
         }
       }
