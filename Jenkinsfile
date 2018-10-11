@@ -22,7 +22,9 @@ pipeline {
         stage('stg2') {
           steps {
             timestamps() {
-              echo 'ok'
+
+            dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+		echo 'stg2:'+env.HOSTNAME
             }
 
           }
