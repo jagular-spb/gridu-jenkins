@@ -13,7 +13,7 @@ pipeline {
             		).trim()
             	}
             	echo "stg1:"+env.HOSTNAME0
-            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jagular-spb/gridu-mvn.git']]])
+            	checkout([$class: 'GitSCM', branches: [[name: '*/HEAD']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jagular-spb/gridu-mvn.git']]])
 	    }
 	    echo "stg1.1:"+env.HOSTNAME0
 	}
