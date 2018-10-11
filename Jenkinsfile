@@ -17,13 +17,13 @@ pipeline {
 
 	}
     }
-    
+}    
     posts {
 	sucsess{
 	    echo 'ok'
 	}
     }
-}
+
     
 	
   environment {
