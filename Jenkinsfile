@@ -1,10 +1,9 @@
 pipeline {
  
   agent {
-        docker
-        {
-        image: "docker.io/jenkinsci/slave:latest"
-            }
+        docker {
+	    image "docker.io/jenkinsci/slave:latest"
+        }
         
     }
     
