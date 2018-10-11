@@ -16,7 +16,7 @@ pipeline {
 	    }
 	    echo "stg1.1:"+env.HOSTNAME0
 	}
-    }
+//    }
 
     post {
     sucsess{
@@ -27,6 +27,7 @@ pipeline {
 	    }
 //	}
 //    }
+    }
     }
     }
 
