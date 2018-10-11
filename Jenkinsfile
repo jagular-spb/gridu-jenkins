@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'docker.io/jenkinsci/slave:latest'
-    }
-
-  }
+  agent any
   stages {
     stage('stg1') {
       steps {
