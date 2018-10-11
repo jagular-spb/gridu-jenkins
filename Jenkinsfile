@@ -1,45 +1,43 @@
-
 pipeline {
-    agent any
-    triggers{ cron('H/15 * * * *') }
-    options {
-	timestamps()
-	newContainerPerStage()
-    }
+  agent any
+  stages {
+    stage('stg1') {
+      parallel {
+        stage('stg1') {
+          steps {
+            echo 'wtf'
+            dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+              script {
+                env.HOSTNAME = sh(
+                  script: "hostname",
+                  returnStdout: true
+                ).trim()
+              }
 
-    stages {  
-	stage('stg1') {
-	    steps {
-	    echo 'wtf'
-		dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
-            	    script {
-			env.HOSTNAME = sh(
-                    	    script: "hostname",
-                    	    returnStdout: true
-                	).trim()
-            	    }
-            	    echo "stg1:" + env.HOSTNAME
-		}
-	    }
-	}	
+              echo "stg1:"+env.HOSTNAME
+            }
+
+          }
+        }
+        stage('stg2') {
+          steps {
+            timestamps() {
+              echo 'ok'
+            }
+
+          }
+        }
+      }
     }
+  }
   environment {
     user = 'Jenkins'
   }
-}
-
-pipeline {
-    agent any
-    options {
-	timestamps()
-	newContainerPerStage()
-    }
-
-    stages {  
-	stage('stg2') {
-	    steps{
-		echo 'env.HOSTNAME'
-	    }
-	}
-    }
+  options {
+    timestamps()
+    newContainerPerStage()
+  }
+  triggers {
+    cron('H/15 * * * *')
+  }
 }
