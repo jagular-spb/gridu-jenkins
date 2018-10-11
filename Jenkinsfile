@@ -18,7 +18,7 @@ pipeline {
                     	    returnStdout: true
                 	).trim()
             	    }
-            	    echo env.HOSTNAME
+            	    echo "stg1:" + env.HOSTNAME
 		}
 	    }
 	}	
@@ -41,7 +41,5 @@ pipeline {
 		echo 'env.HOSTNAME'
 	    }
 	}
-
-    
     }
 }
