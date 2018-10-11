@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'wtf'
         isUnix()
-        sh 'returnStdout: true, script: \'hostname\''
+        sh 'hostname'
         dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
           sh 'hostname'
         }
