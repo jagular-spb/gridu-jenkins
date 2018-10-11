@@ -1,26 +1,15 @@
 pipeline {
- 
-  agent {
-    node {
-	docker.withDockerServer("tcp://127.0.0.1:2376") {
-	    docker.image("docker.io/jenkinsci/slave:latest")
+    agent any
+    stages {  
+	stage('stg1') {
+	    steps {
+	    echo 'wtf'
+		dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+        	    sh 'hostname'
+		}
 	    }
 	}
     }
-    
-  stages {
-    stage('stg1') {
-      steps {
-        echo 'wtf'
-        isUnix()
-/*        dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
-          sh 'hostname'
-        }
-*/        
-
-      }
-    }
-  }
   environment {
     user = 'Jenkins'
   }
