@@ -20,8 +20,9 @@ pipeline {
 
     stage('job2') {
 	steps {
-	    echo "stg2:"+${env.HOSTNAME0}
-
+	    dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+		echo "stg2:"+env.HOSTNAME0
+	    }
 	}
     }
 
