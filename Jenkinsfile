@@ -19,7 +19,7 @@ pipeline {
 //    }
 
     post {
-    sucsess{
+    success{
 //    stage('job2') {
 //	steps {
 	    dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
