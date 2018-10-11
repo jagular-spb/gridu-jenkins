@@ -14,15 +14,13 @@ pipeline {
             	}
             	echo "stg1:"+HOSTNAME0
 	    }
-
-	    
-	    echo "stg1:"+${HOSTNAME}
+	    echo "stg1.1:"+HOSTNAME0
 	}
     }
 
     stage('job2') {
 	steps {
-	    echo "stg2:"+${HOSTNAME0}
+	    echo "stg2:"+${env.HOSTNAME0}
 
 	}
     }
