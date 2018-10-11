@@ -30,9 +30,6 @@ pipeline {
 
     
 	
-  environment {
-    HOSTNAME0 = 'Jenkins'
-  }
   
   options {
     timestamps()
