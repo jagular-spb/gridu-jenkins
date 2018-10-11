@@ -19,14 +19,14 @@ pipeline {
     }
 
     post {
-    stages{
-    stage('job2') {
-	steps {
+    sucsess{
+//    stage('job2') {
+//	steps {
 	    dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
 		echo "stg2:"+env.HOSTNAME0
 	    }
-	}
-    }
+//	}
+//    }
     }
     }
 
