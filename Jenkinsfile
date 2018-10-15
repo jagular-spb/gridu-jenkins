@@ -29,7 +29,7 @@ pipeline {
               echo "<settings><mirrors><mirror><id>nexus</id><mirrorOf>*</mirrorOf><url>http://172.17.01:8081/repository/maven-public/</url></mirror></mirrors><profiles><profile><id>nexus</id><repositories><repository><id>central</id><url>http://central</url><releases><enabled>true</enabled></releases><snapshots><enabled>true</enabled></snapshots></repository></repositories><pluginRepositories><pluginRepository><id>central</id><url>http://central</url><releases><enabled>true</enabled></releases><snapshots><enabled>true</enabled></snapshots></pluginRepository></pluginRepositories></profile></profiles><activeProfiles><activeProfile>nexus</activeProfile></activeProfiles><servers><server><id>git.7579433</id><username>admin</username><password>{W5oxlv3TImkHJ9yURWZSF1SAspr/beBOTeHN8Dd+JDs=}</password></server></servers></settings>" > ~/.m2/settings.xml
           '''
           sh '''
-          mvn deploy
+          mvn -f main-app/pom.xml clean deploy
           '''
 	 
 
