@@ -13,7 +13,7 @@ pipeline {
 
       }
       steps {
-        dockerNode(image: 'docker.io/jenkinsci/slave:latest') {
+        dockerNode(image: 'docker.io/mzagar/jenkins-slave-jdk-maven-git:latest') {
           script {
             env.HOSTNAME0 = sh(
               script: "hostname",
